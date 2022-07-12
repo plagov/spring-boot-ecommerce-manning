@@ -20,7 +20,7 @@ dependencies {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
 
-	implementation 'net.sourceforge.htmlunit:htmlunit:2.62.0'
+	testImplementation 'net.sourceforge.htmlunit:htmlunit'
 }
 
 test {
