@@ -1,4 +1,6 @@
 package com.cakefactory.model;
 
-public record Item(String title, double price) {
+import java.math.BigDecimal;
+
+public record Item(String title, BigDecimal price) {
 }
