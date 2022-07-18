@@ -2,7 +2,9 @@ package com.cakefactory.service;
 
 import com.cakefactory.model.Item;
 
+import java.util.List;
+
 public interface CatalogService {
 
-    Iterable<Item> getItems();
+    List<Item> getItems();
 }

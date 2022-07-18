@@ -23,5 +23,4 @@ public class CatalogController {
         model.put("page_title", "Cake factory items");
         return new ModelAndView("catalog", model);
     }
-
 }
