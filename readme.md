@@ -1,3 +1,11 @@
+# Local run
+
+Run PostgreSQL database localy:
+
+```bash
+docker run -d --name postgres --rm -p 5432:5432 -e POSTGRES_PASSWORD=password postgres
+```
+
 # Technologies
 
 | Technology | Minimum Versions Required | Max Supported (Current) Version |
