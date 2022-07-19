@@ -33,7 +33,6 @@ public class CatalogRepositoryTest {
     @Test
     void canFetchEntitiesFromDatabaseTest() {
         var items = catalogRepository.findAll();
-        assertThat(items).hasSize(1);
-        assertThat(items.get(0).getTitle()).isEqualTo("Red Velvet");
+        assertThat(items).anyMatch(item -> "Red Velvet".equalsIgnoreCase(item.getTitle()));
     }
 }
