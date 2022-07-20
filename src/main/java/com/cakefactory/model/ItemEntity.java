@@ -8,12 +8,12 @@ import java.math.BigDecimal;
 public class ItemEntity {
 
     @Id
-    private String id;
+    private String sku;
     private String title;
     private BigDecimal price;
 
-    public ItemEntity(String id, String title, BigDecimal price) {
-        this.id = id;
+    public ItemEntity(String sku, String title, BigDecimal price) {
+        this.sku = sku;
         this.title = title;
         this.price = price;
     }
@@ -22,8 +22,8 @@ public class ItemEntity {
 
     }
 
-    public String getId() {
-        return id;
+    public String getSku() {
+        return sku;
     }
 
     public String getTitle() {

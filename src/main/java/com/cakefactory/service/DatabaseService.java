@@ -18,7 +18,7 @@ public class DatabaseService implements CatalogService {
     @Override
     public List<Item> getItems() {
         return catalogRepository.findAll().stream()
-                .map(en -> new Item(en.getId(), en.getTitle(), en.getPrice()))
+                .map(en -> new Item(en.getSku(), en.getTitle(), en.getPrice()))
                 .toList();
     }
 }
