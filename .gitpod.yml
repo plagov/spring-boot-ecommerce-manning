@@ -2,7 +2,6 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: Run PostgreSQL database
-    command: docker run -d --name postgres --rm -p 5432:5432 -e POSTGRES_PASSWORD=password postgres
-  - init: Build project
+  - name: Run PostgreSQL database and build the project
+    init: docker run -d --name postgres --rm -p 5432:5432 -e POSTGRES_PASSWORD=password postgres
     command: ./gradlew build

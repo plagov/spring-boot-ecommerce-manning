@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -90,15 +90,14 @@
             </div>
 
             <div class="row">
-                {{#items}}
-                    <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="col-lg-4 col-md-6 mb-4" th:each="item : ${items}">
                         <div class="card h-100">
                             <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                             <div class="card-body">
                                 <h4 class="card-title">
-                                    <a href="#" class="item-title">{{title}}</a>
+                                    <a href="#" class="item-title" th:text="${item.title}">item title</a>
                                 </h4>
-                                <h5>${{price}}</h5>
+                                <h5 th:text="${item.price} + ' €'">item price</h5>
                                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet
                                     numquam aspernatur!</p>
                             </div>
@@ -107,8 +106,6 @@
                             </div>
                         </div>
                     </div>
-                {{/items}}
-
             </div>
             <!-- /.row -->
 
