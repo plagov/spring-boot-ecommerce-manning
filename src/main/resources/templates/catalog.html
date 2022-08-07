@@ -100,6 +100,10 @@
                                 <h5 th:text="${item.price} + ' €'">item price</h5>
                                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet
                                     numquam aspernatur!</p>
+                                <form method="post" th:action="@{/basket}">
+                                    <input type="hidden" th:value="${item.sku}" name="sku"/>
+                                    <input type="submit" value="Add to basket">
+                                </form>
                             </div>
                             <div class="card-footer">
                                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
