@@ -7,4 +7,6 @@ import java.util.List;
 public interface CatalogService {
 
     List<Item> getItems();
+
+    Item findItem(String sku);
 }
