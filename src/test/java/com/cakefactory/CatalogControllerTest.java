@@ -2,6 +2,7 @@ package com.cakefactory;
 
 import com.cakefactory.controller.CatalogController;
 import com.cakefactory.model.Item;
+import com.cakefactory.service.Basket;
 import com.cakefactory.service.CatalogService;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.DomNode;
@@ -28,6 +29,9 @@ public class CatalogControllerTest {
 
     @MockBean
     private CatalogService catalogService;
+
+    @MockBean
+    private Basket basketService;
 
     private WebClient webClient;
 
