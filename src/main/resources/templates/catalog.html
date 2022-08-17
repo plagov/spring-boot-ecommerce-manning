@@ -90,7 +90,11 @@
             </div>
 
             <div>
-                <h5 style="text-align: right" th:text="'Items in basket: ' + ${basketItemsCount}">basket items</h5>
+                <h5 style="text-align: right">
+                    <div style="display: inline">Items in basket: </div>
+                    <div style="display: inline" class="basket-total" th:text="${basketItemsCount}">count</div>
+                </h5>
+                <h5  >basket items</h5>
                 <br>
             </div>
 
@@ -98,7 +102,7 @@
                     <div class="col-lg-4 col-md-6 mb-4" th:each="item : ${items}">
                         <div class="card h-100">
                             <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-                            <div class="card-body">
+                            <div class="card-body" data-th-attr="data-testid=${item.title}">
                                 <h4 class="card-title">
                                     <a href="#" class="item-title" th:text="${item.title}">item title</a>
                                 </h4>
@@ -107,7 +111,7 @@
                                     numquam aspernatur!</p>
                                 <form method="post" th:action="@{/basket}">
                                     <input type="hidden" th:value="${item.sku}" name="sku"/>
-                                    <input type="submit" value="Add to basket">
+                                    <input type="submit" class="add-to-basket" value="Add to basket">
                                 </form>
                             </div>
                             <div class="card-footer">

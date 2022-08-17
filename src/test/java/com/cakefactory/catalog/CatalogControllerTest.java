@@ -1,4 +1,4 @@
-package com.cakefactory;
+package com.cakefactory.catalog;
 
 import com.cakefactory.controller.CatalogController;
 import com.cakefactory.model.Item;

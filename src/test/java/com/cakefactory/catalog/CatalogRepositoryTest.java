@@ -1,4 +1,4 @@
-package com.cakefactory;
+package com.cakefactory.catalog;
 
 import com.cakefactory.model.ItemEntity;
 import com.cakefactory.repository.CatalogRepository;
