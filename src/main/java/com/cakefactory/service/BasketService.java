@@ -2,10 +2,12 @@ package com.cakefactory.service;
 
 import com.cakefactory.model.BasketItem;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.SessionScope;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+@SessionScope
 @Component
 public class BasketService implements Basket {
 
