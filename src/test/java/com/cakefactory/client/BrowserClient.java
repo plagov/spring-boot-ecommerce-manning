@@ -40,7 +40,7 @@ public class BrowserClient {
         this.currentPage = addButton.click();
     }
 
-    public Integer getBasketItems() {
+    public Integer getBasketItemsTotal() {
         try {
             String basketTotalValue = this.currentPage.querySelector(".basket-total").asNormalizedText();
             return Integer.parseInt(basketTotalValue);

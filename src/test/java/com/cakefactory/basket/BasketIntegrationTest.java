@@ -1,6 +1,7 @@
 package com.cakefactory.basket;
 
 import com.cakefactory.client.BrowserClient;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -13,19 +14,61 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class BasketIntegrationTest {
+class BasketIntegrationTest {
 
     @Autowired
     MockMvc mockMvc;
 
+    private BrowserClient browserClient;
+
+    @BeforeEach
+    void setUp() {
+        browserClient = new BrowserClient(mockMvc);
+    }
+
     @Test
     void userShouldAddOneItemToBasket() throws IOException {
-        var browserClient = new BrowserClient(mockMvc);
-
         browserClient.goToHomePage();
         browserClient.clickAddToBasket("Red Velvet");
-        var basketTotal = browserClient.getBasketItems();
+        var basketTotal = browserClient.getBasketItemsTotal();
 
         assertThat(basketTotal).isEqualTo(1);
+    }
+
+    @Test
+    void userShouldAddTheSameItemTwice() throws IOException {
+        browserClient.goToHomePage();
+        browserClient.clickAddToBasket("Red Velvet");
+        browserClient.clickAddToBasket("Red Velvet");
+        var basketTotal = browserClient.getBasketItemsTotal();
+
+        assertThat(basketTotal).isEqualTo(2);
+    }
+
+    @Test
+    void userShouldAddDifferentItems() throws IOException {
+        browserClient.goToHomePage();
+        browserClient.clickAddToBasket("Red Velvet");
+        browserClient.clickAddToBasket("Croissant with almonds");
+        var basketTotal = browserClient.getBasketItemsTotal();
+
+        assertThat(basketTotal).isEqualTo(2);
+    }
+
+    @Test
+    void shouldAddItemsToBasketPerUserSession() throws IOException {
+        browserClient.goToHomePage();
+        browserClient.clickAddToBasket("Red Velvet");
+        browserClient.clickAddToBasket("Croissant with almonds");
+
+        var secondClient = new BrowserClient(mockMvc);
+        secondClient.goToHomePage();
+        secondClient.clickAddToBasket("Cheese cake");
+
+        var firstBasket = browserClient.getBasketItemsTotal();
+        var secondBasket = secondClient.getBasketItemsTotal();
+
+        assertThat(firstBasket).isEqualTo(2);
+        assertThat(secondBasket).isEqualTo(1);
     }
 }

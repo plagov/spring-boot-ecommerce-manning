@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
 
 @WebMvcTest(controllers = CatalogController.class)
 @MockBeans({ @MockBean(Basket.class) })
-public class CatalogControllerTest {
+class CatalogControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
