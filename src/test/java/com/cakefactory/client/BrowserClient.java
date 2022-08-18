@@ -24,8 +24,8 @@ public class BrowserClient {
         this.webClient = MockMvcWebClientBuilder.mockMvcSetup(mockMvc).build();
     }
 
-    public void goToCatalogPage() throws IOException {
-        this.currentPage = this.webClient.getPage("http://localhost:8080/catalog");
+    public void goToHomePage() throws IOException {
+        this.currentPage = this.webClient.getPage("http://localhost:8080/");
     }
 
     public void clickAddToBasket(String title) throws IOException {
@@ -84,7 +84,7 @@ public class BrowserClient {
     }
 
     public String pageText() {
-        return this.currentPage.asText();
+        return this.currentPage.asNormalizedText();
     }
 
     private DomNode getBasketItemRow(String title) {

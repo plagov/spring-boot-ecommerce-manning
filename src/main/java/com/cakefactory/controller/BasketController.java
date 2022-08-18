@@ -17,6 +17,6 @@ public class BasketController {
     @PostMapping("/basket")
     public String addToBasket(@RequestParam String sku) {
         basket.addItem(sku);
-        return "redirect:/catalog";
+        return "redirect:/";
     }
 }

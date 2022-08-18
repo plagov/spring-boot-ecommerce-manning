@@ -22,7 +22,7 @@ public class BasketIntegrationTest {
     void userShouldAddOneItemToBasket() throws IOException {
         var browserClient = new BrowserClient(mockMvc);
 
-        browserClient.goToCatalogPage();
+        browserClient.goToHomePage();
         browserClient.clickAddToBasket("Red Velvet");
         var basketTotal = browserClient.getBasketItems();
 

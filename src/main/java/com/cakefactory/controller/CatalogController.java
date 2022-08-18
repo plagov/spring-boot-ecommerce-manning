@@ -19,7 +19,7 @@ public class CatalogController {
         this.basketService = basketService;
     }
 
-    @GetMapping("/catalog")
+    @GetMapping("/")
     public ModelAndView catalog(Map<String, Object> model) {
         var items = catalogService.getItems();
         var basketItemsCount = basketService.getBasketItemsCount();

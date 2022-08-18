@@ -43,7 +43,7 @@ public class CatalogControllerTest {
     void returnCatalogPage() throws Exception {
         when(catalogService.getItems()).thenReturn(List.of(new Item("01", "Red Velvet", BigDecimal.valueOf(3))));
 
-        HtmlPage page = webClient.getPage("http://localhost:8080/catalog");
+        HtmlPage page = webClient.getPage("http://localhost:8080/");
         var actual = page.querySelectorAll(".item-title")
                 .stream().map(DomNode::asNormalizedText).toList();
 
