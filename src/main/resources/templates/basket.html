@@ -5,14 +5,24 @@
 <nav th:insert="fragments/nav.html :: nav"></nav>
 
 <div class="container">
-    <div th:each="basketItem : ${basketItems}">
-        <div class="card h-100">
-            <div class="basket-item-card">
-                <div class="basket-item-title" th:text="${basketItem.item.title}">basket item title</div>
-                <div th:text="'Quantity: ' + ${basketItem.quantity}">basket item quantity</div>
-            </div>
-        </div>
-    </div>
+    <table class="table table-hover">
+        <thead class="font-weight-bold">
+            <tr>
+                <td>Item</td>
+                <td class="text-center">Price per item</td>
+                <td class="text-center">Quantity</td>
+                <td class="text-center">Total price</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="basketItem : ${basketItems}">
+                <td th:text="${basketItem.item.title}">title</td>
+                <td class="text-center" th:text="${basketItem.item.price} + ' €'">price</td>
+                <td class="text-center" th:text="${basketItem.quantity}">quantity</td>
+                <td class="text-center" th:text="${basketItem.quantity * basketItem.item.price} + ' €'">total price</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <footer th:insert="fragments/footer.html :: footer"></footer>
