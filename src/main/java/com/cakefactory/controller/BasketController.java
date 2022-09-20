@@ -30,4 +30,10 @@ public class BasketController {
         model.put("basketItems", basketItems);
         return new ModelAndView("basket", model);
     }
+
+    @PostMapping("/basket/delete")
+    public String deleteBasketItem(@RequestParam String sku) {
+        basket.deleteBasketItem(sku);
+        return "redirect:/basket";
+    }
 }

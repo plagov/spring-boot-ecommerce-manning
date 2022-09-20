@@ -12,6 +12,7 @@
                 <td class="text-center">Price per item</td>
                 <td class="text-center">Quantity</td>
                 <td class="text-center">Total price</td>
+                <td></td>
             </tr>
         </thead>
         <tbody>
@@ -20,6 +21,12 @@
                 <td class="text-center" th:text="${basketItem.item.price} + ' €'">price</td>
                 <td class="text-center" th:text="${basketItem.quantity}">quantity</td>
                 <td class="text-center" th:text="${basketItem.quantity * basketItem.item.price} + ' €'">total price</td>
+                <td>
+                    <form method="post" th:action="@{/basket/delete}">
+                        <input type="hidden" th:value="${basketItem.item.sku}" name="sku"/>
+                        <input type="submit" class="delete-from-basket" value="Remove item">
+                    </form>
+                </td>
             </tr>
         </tbody>
     </table>

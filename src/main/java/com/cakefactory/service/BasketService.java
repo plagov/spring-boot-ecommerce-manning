@@ -40,4 +40,15 @@ public class BasketService implements Basket {
     public List<BasketItem> getBasketItems() {
         return basketItems.values().stream().toList();
     }
+
+    @Override
+    public void deleteBasketItem(String sku) {
+        var basketItem = basketItems.get(sku);
+        if (basketItem.quantity() == 1) {
+            basketItems.remove(sku);
+        } else {
+            var quantity = basketItem.quantity() - 1;
+            basketItems.replace(sku, new BasketItem(quantity, basketItem.item()));
+        }
+    }
 }

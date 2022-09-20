@@ -11,4 +11,6 @@ public interface Basket {
     int getBasketItemsCount();
 
     List<BasketItem> getBasketItems();
+
+    void deleteBasketItem(String sku);
 }
