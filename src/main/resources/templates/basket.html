@@ -16,10 +16,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="basketItem : ${basketItems}">
-                <td th:text="${basketItem.item.title}">title</td>
+            <tr th:each="basketItem : ${basketItems}" data-th-attr="data-testid=${basketItem.item.title}">
+                <td th:text="${basketItem.item.title}" data-testid="item">title</td>
                 <td class="text-center" th:text="${basketItem.item.price} + ' €'">price</td>
-                <td class="text-center" th:text="${basketItem.quantity}">quantity</td>
+                <td class="text-center" th:text="${basketItem.quantity}" data-testid="quantity">quantity</td>
                 <td class="text-center" th:text="${basketItem.quantity * basketItem.item.price} + ' €'">total price</td>
                 <td>
                     <form method="post" th:action="@{/basket/delete}">

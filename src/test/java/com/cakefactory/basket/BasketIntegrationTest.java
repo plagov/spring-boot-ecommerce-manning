@@ -71,4 +71,16 @@ class BasketIntegrationTest {
         assertThat(firstBasket).isEqualTo(2);
         assertThat(secondBasket).isEqualTo(1);
     }
+
+    @Test
+    void userShouldSeeItemInBasket() throws IOException {
+        var itemTitle = "Red Velvet";
+        browserClient.goToHomePage();
+        browserClient.clickAddToBasket(itemTitle);
+        browserClient.goToBasket();
+
+        var quantity = browserClient.getBasketItemQtyByTitle(itemTitle);
+
+        assertThat(quantity).isEqualTo("1");
+    }
 }
