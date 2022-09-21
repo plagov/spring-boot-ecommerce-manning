@@ -68,7 +68,7 @@ public class BrowserClient {
             return;
         }
 
-        HtmlElement deleteButton = itemRow.querySelector(".btn.remove-item");
+        HtmlElement deleteButton = itemRow.querySelector("input[value='Remove item']");
         this.currentPage = deleteButton.click();
     }
 
@@ -100,5 +100,10 @@ public class BrowserClient {
     private void setValue(String selector, String value) {
         HtmlInput input = this.currentPage.querySelector(selector);
         input.setValueAttribute(value);
+    }
+
+    public String getAlertText() {
+        var alertElement = this.currentPage.querySelector(".alert");
+        return alertElement.asNormalizedText();
     }
 }
