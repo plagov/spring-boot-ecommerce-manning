@@ -50,16 +50,16 @@ public class BrowserClient {
     }
 
     public void goToBasket() throws IOException {
-        this.currentPage = this.webClient.getPage("http://localhost/basket");
+        this.currentPage = this.webClient.getPage("http://localhost:8080/basket");
     }
 
-    public String getBasketItemQtyLabel(String title) {
+    public String getBasketItemQtyByTitle(String title) {
         DomNode itemRow = getBasketItemRow(title);
         if (itemRow == null) {
             return "";
         }
 
-        return itemRow.querySelector(".qty").asNormalizedText();
+        return itemRow.querySelector("[data-testid='quantity']").asNormalizedText();
     }
 
     public void clickRemoveFromBasket(String title) throws IOException {
@@ -68,7 +68,7 @@ public class BrowserClient {
             return;
         }
 
-        HtmlElement deleteButton = itemRow.querySelector(".btn.remove-item");
+        HtmlElement deleteButton = itemRow.querySelector("input[value='Remove item']");
         this.currentPage = deleteButton.click();
     }
 
@@ -88,17 +88,22 @@ public class BrowserClient {
     }
 
     private DomNode getBasketItemRow(String title) {
-        List<DomNode> items = this.currentPage.getByXPath(String.format("//tr[descendant::td[text()='%s']]", title));
-        if (items.size() != 1) {
+        List<DomNode> itemCards = this.currentPage.getByXPath("//tr[@data-testid='%s']".formatted(title));
+        if (itemCards.size() != 1) {
             logger.warn("No item found with title {}", title);
             return null;
         }
 
-        return items.get(0);
+        return itemCards.get(0);
     }
 
     private void setValue(String selector, String value) {
         HtmlInput input = this.currentPage.querySelector(selector);
         input.setValueAttribute(value);
+    }
+
+    public String getAlertText() {
+        var alertElement = this.currentPage.querySelector(".alert");
+        return alertElement.asNormalizedText();
     }
 }

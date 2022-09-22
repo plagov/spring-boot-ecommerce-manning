@@ -71,4 +71,37 @@ class BasketIntegrationTest {
         assertThat(firstBasket).isEqualTo(2);
         assertThat(secondBasket).isEqualTo(1);
     }
+
+    @Test
+    void userShouldSeeItemInBasket() throws IOException {
+        var itemTitle = "Red Velvet";
+        browserClient.goToHomePage();
+        browserClient.clickAddToBasket(itemTitle);
+        browserClient.goToBasket();
+
+        var quantity = browserClient.getBasketItemQtyByTitle(itemTitle);
+
+        assertThat(quantity).isEqualTo("1");
+    }
+
+    @Test
+    void userShouldDeleteItemFromBasket() throws IOException {
+        var itemTitle = "Red Velvet";
+        browserClient.goToHomePage();
+        browserClient.clickAddToBasket(itemTitle);
+        browserClient.clickAddToBasket(itemTitle);
+        browserClient.goToBasket();
+
+        var originalQuantity = browserClient.getBasketItemQtyByTitle(itemTitle);
+        assertThat(originalQuantity).isEqualTo("2");
+
+        browserClient.clickRemoveFromBasket(itemTitle);
+        var decreasedQuantity = browserClient.getBasketItemQtyByTitle(itemTitle);
+        assertThat(decreasedQuantity).isEqualTo("1");
+
+        browserClient.clickRemoveFromBasket(itemTitle);
+        var emptyQuantity = browserClient.getBasketItemQtyByTitle(itemTitle);
+        assertThat(emptyQuantity).isEmpty();
+        assertThat(browserClient.getAlertText()).isEqualTo("Your basket is empty!");
+    }
 }
