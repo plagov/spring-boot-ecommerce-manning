@@ -5,7 +5,39 @@
 <nav th:insert="fragments/nav.html :: nav"></nav>
 
 <div class="container">
+    <form>
+        <div class="card-body">
+            <div class="form-group">
+                <label>
+                    <input class="form-control" type="text" placeholder="Email">
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input class="form-control" type="password" placeholder="Password">
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input class="form-control" type="password" placeholder="Address line 1">
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input class="form-control" type="password" placeholder="Address line 2">
+                </label>
+            </div>
+            <div class="form-group">
+                <label>
+                    <input class="form-control" type="password" placeholder="Postcode">
+                </label>
+            </div>
 
+            <label>
+                <button class="btn btn-block btn-bold btn-primary">Sign Up</button>
+            </label>
+        </div>
+    </form>
 </div>
 
 <footer th:insert="fragments/footer.html :: footer"></footer>
