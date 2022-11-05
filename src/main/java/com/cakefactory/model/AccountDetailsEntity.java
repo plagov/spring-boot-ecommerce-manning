@@ -14,7 +14,7 @@ public class AccountDetailsEntity {
     @Column(name = "password")
     private String password;
 
-    public AccountDetailsEntity(String email, String password, String addressLine1, String addressLine2, String postcode) {
+    public AccountDetailsEntity(String email, String password) {
         this.email = email;
         this.password = password;
     }
