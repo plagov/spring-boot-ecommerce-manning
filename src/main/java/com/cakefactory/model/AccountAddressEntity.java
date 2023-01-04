@@ -20,6 +20,9 @@ public class AccountAddressEntity {
     @Column(name = "postcode")
     private String postcode;
 
+    public AccountAddressEntity() {
+    }
+
     public AccountAddressEntity(String email, String addressLine1, String addressLine2, String postcode) {
         this.email = email;
         this.addressLine1 = addressLine1;
