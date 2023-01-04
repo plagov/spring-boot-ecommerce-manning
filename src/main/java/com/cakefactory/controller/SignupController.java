@@ -42,4 +42,9 @@ public class SignupController {
         LOGGER.info("Save user with email {}", email);
         return "redirect:/signup-complete";
     }
+
+    @GetMapping("/signup-complete")
+    public ModelAndView getSignupCompleteNotificationAlert() {
+        return new ModelAndView("signup-complete");
+    }
 }
