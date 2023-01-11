@@ -19,6 +19,8 @@ public class BrowserClient {
 
     private final WebClient webClient;
     private HtmlPage currentPage;
+    private HtmlPage signupPage;
+    private HtmlPage signupCompletePage;
 
     public BrowserClient(MockMvc mockMvc) {
         this.webClient = MockMvcWebClientBuilder.mockMvcSetup(mockMvc).build();
@@ -105,5 +107,36 @@ public class BrowserClient {
     public String getAlertText() {
         var alertElement = this.currentPage.querySelector(".alert");
         return alertElement.asNormalizedText();
+    }
+
+    public void openSignupPage() throws IOException {
+        HtmlElement signUpLink = this.currentPage.querySelector("#signup-link");
+        signupPage = signUpLink.click();
+    }
+
+    public void fillInSignupForm(String email,
+                                 String password,
+                                 String addressLine1,
+                                 String addressLine2,
+                                 String postcode) throws IOException {
+        HtmlInput emailInput = this.signupPage.querySelector("input[name='email']");
+        HtmlInput passwordInput = this.signupPage.querySelector("input[name='password']");
+        HtmlInput address1Input = this.signupPage.querySelector("input[name='addressLine1']");
+        HtmlInput address2Input = this.signupPage.querySelector("input[name='addressLine2']");
+        HtmlInput postcodeInput = this.signupPage.querySelector("input[name='postcode']");
+
+        emailInput.setValueAttribute(email);
+        passwordInput.setValueAttribute(password);
+        address1Input.setValueAttribute(addressLine1);
+        address2Input.setValueAttribute(addressLine2);
+        postcodeInput.setValueAttribute(postcode);
+
+        HtmlElement signupButton = this.signupPage.querySelector("#signup-button");
+        signupCompletePage = signupButton.click();
+    }
+
+    public String getSignupCompleteMessage() {
+        HtmlElement signupCompleteMessage = this.signupCompletePage.querySelector("#signup-complete-message");
+        return signupCompleteMessage.asNormalizedText();
     }
 }
