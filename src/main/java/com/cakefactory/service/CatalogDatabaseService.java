@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class DatabaseService implements CatalogService {
+public class CatalogDatabaseService implements CatalogService {
 
     private final CatalogRepository catalogRepository;
 
-    public DatabaseService(CatalogRepository catalogRepository) {
+    public CatalogDatabaseService(CatalogRepository catalogRepository) {
         this.catalogRepository = catalogRepository;
     }
 

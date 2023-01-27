@@ -1,7 +1,0 @@
-image:
-  file: .gitpod.Dockerfile
-
-tasks:
-  - name: Run PostgreSQL database and build the project
-    before: docker run -d --name postgres --rm -p 5432:5432 -e POSTGRES_PASSWORD=password postgres
-    command: ./gradlew build
