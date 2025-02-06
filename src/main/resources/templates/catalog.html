@@ -29,6 +29,7 @@
                                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet
                                     numquam aspernatur!</p>
                                 <form method="post" th:action="@{/basket}">
+                                    <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
                                     <input type="hidden" th:value="${item.sku}" name="sku"/>
                                     <input type="submit" class="add-to-basket" value="Add to basket">
                                 </form>

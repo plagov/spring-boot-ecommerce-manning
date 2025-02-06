@@ -6,6 +6,7 @@
 
 <div class="container">
     <form method="post" th:action="@{/signup}">
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
         <div class="card-body">
             <div class="form-group">
                 <label>
