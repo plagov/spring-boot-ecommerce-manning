@@ -23,6 +23,7 @@
                 <td class="text-center" th:text="${basketItem.quantity * basketItem.item.price} + ' €'">total price</td>
                 <td>
                     <form method="post" th:action="@{/basket/delete}">
+                        <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
                         <input type="hidden" th:value="${basketItem.item.sku}" name="sku"/>
                         <input type="submit" class="delete-from-basket" value="Remove item">
                     </form>
