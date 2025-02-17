@@ -22,4 +22,14 @@ public class DatabaseAccountAddressService implements AccountAddressService {
                 accountAddress.postcode());
         accountAddressRepository.save(entity);
     }
+
+    @Override
+    public AccountAddress getAccountAddress(String email) {
+        var accountAddress = accountAddressRepository.getAccountAddressByEmail(email);
+        return new AccountAddress(
+                accountAddress.getEmail(),
+                accountAddress.getAddressLine1(),
+                accountAddress.getAddressLine2(),
+                accountAddress.getPostcode());
+    }
 }

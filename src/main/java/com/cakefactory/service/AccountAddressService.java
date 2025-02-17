@@ -5,4 +5,6 @@ import com.cakefactory.model.AccountAddress;
 public interface AccountAddressService {
 
     void saveAccountAddress(AccountAddress accountAddress);
+
+    AccountAddress getAccountAddress(String email);
 }
