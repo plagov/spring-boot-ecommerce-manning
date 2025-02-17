@@ -1,6 +1,6 @@
 package com.cakefactory.controller;
 
-import com.cakefactory.service.Basket;
+import com.cakefactory.service.BasketService;
 import com.cakefactory.service.CatalogService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +12,9 @@ import java.util.Map;
 public class CatalogController {
 
     private final CatalogService catalogService;
-    private final Basket basketService;
+    private final BasketService basketService;
 
-    public CatalogController(CatalogService catalogService, Basket basketService) {
+    public CatalogController(CatalogService catalogService, BasketService basketService) {
         this.catalogService = catalogService;
         this.basketService = basketService;
     }

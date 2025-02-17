@@ -2,7 +2,7 @@ package com.cakefactory.catalog;
 
 import com.cakefactory.controller.CatalogController;
 import com.cakefactory.model.Item;
-import com.cakefactory.service.Basket;
+import com.cakefactory.service.BasketService;
 import com.cakefactory.service.CatalogService;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.DomNode;
@@ -23,7 +23,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 @WebMvcTest(controllers = CatalogController.class)
-@MockBeans({ @MockBean(Basket.class) })
+@MockBeans({ @MockBean(BasketService.class) })
 class CatalogControllerTest {
 
     @Autowired
