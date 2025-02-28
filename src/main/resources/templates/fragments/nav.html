@@ -19,7 +19,7 @@
                     <a class="nav-link" href="/signup" id="signup-link">Signup</a>
                 </li>
                 <li class="nav-item">
-                    <span class="nav-link" href="/account" id="current-user" th:if="${email}" th:text="${email}"></span>
+                    <a class="nav-link" href="/account" id="current-user" th:if="${email}" th:text="${email}"></a>
                     <a class="nav-link" href="/login" id="current-user" th:unless="${email}">Login</a>
                 </li>
             </ul>
