@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head.html :: head"></head>
+<body>
+<nav th:insert="fragments/nav.html :: nav"></nav>
+<br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                    Edit Account Address
+                </div>
+                <div class="card-body">
+                    <form method="post" th:action="@{/account}">
+                        <div class="form-group row">
+                            <label for="addressLine1" class="col-sm-4 col-form-label">Address Line 1</label>
+                            <div class="col-sm-8">
+                                <input id="addressLine1" class="form-control" type="text" th:value="${addressLine1}" name="addressLine1">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="addressLine2" class="col-sm-4 col-form-label">Address Line 2</label>
+                            <div class="col-sm-8">
+                                <input id="addressLine2" class="form-control" type="text" th:value="${addressLine2}" name="addressLine2">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="postcode" class="col-sm-4 col-form-label">Postcode</label>
+                            <div class="col-sm-8">
+                                <input id="postcode" class="form-control" type="text" th:value="${postcode}" name="postcode">
+                            </div>
+                        </div>
+                        <div class="form-group row mt-4">
+                            <div class="col-sm-4"></div>
+                            <div class="col-sm-8">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                <a th:href="@{/account}" class="btn btn-secondary">Cancel</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<footer th:insert="fragments/footer.html :: footer"></footer>
+</body>
+</html>
