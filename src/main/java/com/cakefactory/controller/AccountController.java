@@ -22,25 +22,13 @@ public class AccountController {
 
     @GetMapping("/account")
     public ModelAndView getAccountAddress(Map<String, Object> model, Principal principal) {
-        if (principal != null) {
-            var accountAddress = accountAddressService.getAccountAddress(principal.getName());
-            model.put("addressLine1", accountAddress.addressLine1());
-            model.put("addressLine2", accountAddress.addressLine2());
-            model.put("postcode", accountAddress.postcode());
-        }
-
+        getExistingAddressDetails(model, principal);
         return new ModelAndView("account", model);
     }
 
     @GetMapping("/account/edit")
     public ModelAndView getEditAccountView(Map<String, Object> model, Principal principal) {
-        if (principal != null) {
-            var accountAddress = accountAddressService.getAccountAddress(principal.getName());
-            model.put("addressLine1", accountAddress.addressLine1());
-            model.put("addressLine2", accountAddress.addressLine2());
-            model.put("postcode", accountAddress.postcode());
-        }
-
+        getExistingAddressDetails(model, principal);
         return new ModelAndView("account-edit", model);
     }
 
@@ -57,5 +45,14 @@ public class AccountController {
         }
 
         return "redirect:/account";
+    }
+
+    private void getExistingAddressDetails(Map<String, Object> model, Principal principal) {
+        if (principal != null) {
+            var accountAddress = accountAddressService.getAccountAddress(principal.getName());
+            model.put("addressLine1", accountAddress.addressLine1());
+            model.put("addressLine2", accountAddress.addressLine2());
+            model.put("postcode", accountAddress.postcode());
+        }
     }
 }
