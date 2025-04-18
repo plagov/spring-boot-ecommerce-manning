@@ -29,7 +29,6 @@ public class SecurityConfig {
             AccountDetailsEntity account = repository.findByEmail(email)
                     .orElseThrow(() -> new UsernameNotFoundException("User with email %s not found".formatted(email)));
 
-
             return new User(
                     account.getEmail(),
                     account.getPassword(),
@@ -43,6 +42,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeRequests()
+                .antMatchers("/account/**").authenticated()
                 .antMatchers("/", "/**").permitAll()
                 .and()
                 .formLogin()

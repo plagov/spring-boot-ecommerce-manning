@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:insert="fragments/head.html :: head"></head>
+<body>
+<nav th:insert="fragments/nav.html :: nav"></nav>
+<br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span>Account Address</span>
+                    <a th:href="@{/account/edit}" class="btn btn-sm btn-primary">Edit</a>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">Address Line 1:</dt>
+                        <dd class="col-sm-8" th:text="${addressLine1}">addressLine1</dd>
+
+                        <dt class="col-sm-4">Address Line 2:</dt>
+                        <dd class="col-sm-8" th:text="${addressLine2}">addressLine2</dd>
+
+                        <dt class="col-sm-4">Postcode:</dt>
+                        <dd class="col-sm-8" th:text="${postcode}">postcode</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<footer th:insert="fragments/footer.html :: footer"></footer>
+</body>
+
+</html>
